@@ -2,3 +2,5 @@
 <% @events.each do |event| %>
   <%= render event %>
 <% end %>
+<h2>Create your event!</h2>
+<%= link_to 'Create', new_event_path %>
