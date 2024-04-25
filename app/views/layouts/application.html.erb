@@ -9,8 +9,30 @@
     <%= javascript_importmap_tags %>
   </head>
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
+    <div class="grid-container">
+      <nav >
+        <ul class ="grid-nav">
+          <li class="home-button"><%= button_to "Home", root_path , method: :get %></li>
+          <% if user_signed_in? %>
+            <div class="right">
+              <li><%= button_to "Profile", user_path(current_user) , method: :get%></li>
+              <li><%= button_to "Sign Out", destroy_user_session_path , method: :delete%></li>
+            </div>
+          <% else %>
+            <div class="right">
+              <li><%= button_to "Sign up", new_user_registration_path , method: :get%></li>
+              <li><%= button_to "Sign in", new_user_session_path , method: :get %></li>
+            </div>
+          <% end %>
+        </ul>
+      </nav>
+      <div class="flash">
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+      </div>
+      <div class="content">
+        <%= yield %>
+      </div>
+    </div>
   </body>
 </html>
