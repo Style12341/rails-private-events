@@ -1,15 +1,18 @@
-<div id="<%= dom_id event %>">
-  <p>
+<div class="event-card">
+  <header>
     <h1><%= event.name %></h1>
-  </p>
-  <p>
     <h3>Host: <%= event.creator.name %></h2>
-  </p>
+  </header>
   <p>
     <%= event.description %>
   </p>
-  <p>
-    <strong>Date:</strong>
+  <div class="card-footer">
+    <%=button_to 'See details', event_path(event), method: :get%>
+    <% if event.creator == current_user %>
+      <%=button_to 'Edit', edit_event_path(event), method: :get%>
+      <%=button_to 'Delete', event_path(event), method: :delete%>
+    <% end %>
+    <%#button_to 'Attend', event_attendances_path(event), method: :post%>
     <%= event.date %>
-  </p>
+  </div>
 </div>

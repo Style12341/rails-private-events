@@ -1,6 +1,10 @@
 <h1>Available events:</h1>
-<% @events.each do |event| %>
-  <%= render event %>
+<div class="event-container">
+  <% @events.each do |event| %>
+    <%= render event %>
+  <% end %>
+</div>
+<% if user_signed_in? %>
+  <h2>Create your event!</h2>
+  <%= link_to 'Create', new_event_path %>
 <% end %>
-<h2>Create your event!</h2>
-<%= link_to 'Create', new_event_path %>
