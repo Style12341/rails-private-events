@@ -1,10 +1,26 @@
 <h1>Available events:</h1>
-<div class="event-container">
-  <% @events.each do |event| %>
-    <div class="event-card">
-      <%= render event %>
+<div class="events-attended">
+  <div class="event-container">
+    <div class="future-events">
+      <h2>Upcoming:</h2>
+      <% @events.upcoming.each do |event| %>
+        <div class="event-card">
+          <%= render event %>
+        </div>
+      <% end %>
     </div>
-  <% end %>
+  </div>
+  <hr>
+  <div class="event-container">
+    <div class="past-events">
+      <h2>Past:</h2>
+      <% @events.past.each do |event| %>
+        <div class="event-card">
+          <%= render event %>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
 <% if user_signed_in? %>
   <h2>Create your event!</h2>

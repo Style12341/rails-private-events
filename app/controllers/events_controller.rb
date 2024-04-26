@@ -24,6 +24,17 @@ class EventsController < ApplicationController
     end
   end
 
+  def destroy
+    @event = Event.find(params[:id])
+    if @event.creator != current_user
+      flash[:alert] = 'You can only delete your own events'
+      redirect_to @event
+    end
+    @event.delete
+    flash[:notice] = 'Event deleted'
+    redirect_to events_path
+  end
+
   private
 
   def event_params
