@@ -1,7 +1,9 @@
 <h1>Available events:</h1>
 <div class="event-container">
   <% @events.each do |event| %>
-    <%= render event %>
+    <div class="event-card">
+      <%= render event %>
+    </div>
   <% end %>
 </div>
 <% if user_signed_in? %>

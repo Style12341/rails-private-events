@@ -1,18 +1,19 @@
-<div class="event-card">
-  <header>
-    <h1><%= event.name %></h1>
-    <h3>Host: <%= event.creator.name %></h2>
-  </header>
-  <p>
-    <%= event.description %>
-  </p>
-  <div class="card-footer">
-    <%=button_to 'See details', event_path(event), method: :get%>
-    <% if event.creator == current_user %>
-      <%=button_to 'Edit', edit_event_path(event), method: :get%>
-      <%=button_to 'Delete', event_path(event), method: :delete%>
-    <% end %>
-    <%#button_to 'Attend', event_attendances_path(event), method: :post%>
-    <%= event.date %>
-  </div>
+<header>
+  <h1><%= event.name %></h1>
+  <h3>Host: <%= event.creator.name %></h2>
+</header>
+<p>
+  <%= event.description %>
+</p>
+<div class="card-footer">
+  <%=button_to 'See details', event_path(event), method: :get%>
+  <% if event.creator == current_user %>
+    <%=button_to 'Edit', edit_event_path(event), method: :get%>
+    <%=button_to 'Delete', event_path(event), method: :delete%>
+  <% else %>
+    <div></div>
+    <div></div>
+  <% end %>
+  <%#button_to 'Attend', event_attendances_path(event), method: :post%>
+  <%= event.date %>
 </div>

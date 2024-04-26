@@ -102,6 +102,8 @@ nav{
   display: grid;
   grid-template-columns: repeat(4,1fr);
   grid-gap: 10px;
+  justify-items: center;
+  align-items: center;
 }
 p {
   word-break: break-all;
