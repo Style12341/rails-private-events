@@ -1,7 +1,8 @@
-class EventAttendanceController < ApplicationController
+class EventAttendancesController < ApplicationController
   before_action :authenticate_user!
   def create
-    @event = Event.find(params[:event_id])
+    print params
+    @event = Event.find(params[:format])
     if current_user == @event.creator
       flash[:alert] = 'You cannot attend your own event'
       redirect_to @event
@@ -12,7 +13,7 @@ class EventAttendanceController < ApplicationController
   end
 
   def destroy
-    @event = Event.find(params[:event_id])
+    @event = Event.find(params[:format])
     if current_user == @event.creator
       flash[:alert] = 'You cannot unattend your own event'
       redirect_to @event

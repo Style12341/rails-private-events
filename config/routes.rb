@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  get 'event/attendance' => 'event_attendance#create'
-  delete 'event/attendance' => 'event_attendance#destroy'
+  resource :event_attendance, only: %i[create destroy]
   resources :events
   devise_for :users
   resources :users, only: [:show]

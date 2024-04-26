@@ -10,6 +10,13 @@
   <% if event.creator == current_user %>
     <%=button_to 'Edit', edit_event_path(event), method: :get%>
     <%=button_to 'Delete', event_path(event), method: :delete%>
+  <% elsif current_user %>
+    <% if event.attendees.exists?(current_user.id)  %>
+      <%=button_to 'Unattend', event_attendance_path(event), method: :delete %>
+    <% else %>
+      <%=button_to 'Attend', event_attendance_path(event), method: :post %>
+    <% end %>
+    <div></div>
   <% else %>
     <div></div>
     <div></div>
